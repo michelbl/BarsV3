@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+    <head>
+        <base href="{{ base_url }}" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="{{ STATIC_URL }}images/bars-logo.png" type="image/png" />
+    </head>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/default/base.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/default/history.css" media="all"/>
+    <body>
+        <table id="body" cellpadding="0" cellspacing="0">
+            <tr>
+                <td id="body-logo">
+                    {% block icons %}
+                    <a href="{{ base_url }}/" class="image">
+                        <img src="{{ STATIC_URL }}images/bars-logo.png" alt="[LOGO]"/>
+                    </a>
+                    {% endblock %}
+                </td>
+                <td id="body-header">
+                    {% block title %}
+                    Site des bars d'étage
+                    {% endblock %}
+                </td>
+            </tr>
+            <tr>
+                <td id="body-menu" rowspan="2" valign="top">
+                    {% block menu %}
+                    {% endblock %}
+                </td>
+                <td id="body-form">
+                    {% block form %}
+                        {% if login_error %}
+                            <p> Erreur : {{ login_error }}</p>
+                        {% endif %}
+                        {% if login_form %}
+                            <form action="." method="POST">
+                                {% csrf_token %}
+                                {{ login_form.as_p }}
+                                <input type="submit" value="Submit" />
+                            </form>
+                        {% endif %}
+                    {% endblock %}
+                </td>
+            </tr>
+            <tr>
+                <td id="body-content">
+                    {% block content %}
+                    {% endblock %}
+                </td>
+            </tr>
+            <tr>
+                <td id="body-footer" colspan="2">
+                    {% block footer %}
+            <div>
+            Bars {{ version }} -
+            <a href="mailto:{{ mail_babe }}" class="text-link">
+                Contacter un webmaster.
+            </a>
+            </div>
+                    {% endblock %}
+                </td>
+            </tr>
+        </table>
+    </body>
+<html>
+

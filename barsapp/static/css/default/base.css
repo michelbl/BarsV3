@@ -1,0 +1,209 @@
+/***************************************************************************
+ *  Copyright (C) 2011 Binet Réseau                                        *
+ *  http://www.polytechnique.fr/eleves/binets/reseau/                      *
+ *                                                                         *
+ *  This program is free software; you can redistribute it and/or modify   *
+ *  it under the terms of the GNU General Public License as published by   *
+ *  the Free Software Foundation; either version 2 of the License, or      *
+ *  (at your option) any later version.                                    *
+ *                                                                         *
+ *  This program is distributed in the hope that it will be useful,        *
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of         *
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *
+ *  GNU General Public License for more details.                           *
+ *                                                                         *
+ *  You should have received a copy of the GNU General Public License      *
+ *  along with this program; if not, write to the Free Software            *
+ *  Foundation, Inc.,                                                      *
+ *  59 Temple Place, Suite 330, Boston, MA  02111-1307  USA                *
+ ***************************************************************************/
+
+/** Page disposition
+ */
+body {
+    background-color: #cde;
+}
+#body {
+    background-color: white;
+    width: 100%;
+}
+#body-header {
+    border-bottom-style: solid;
+    border-bottom-color: #ccd;
+    border-bottom-width: 1px;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 2em;
+    font-variant: small-caps;
+    font-weight: bold;
+    margin: 0 0 2px 0;
+    text-align: center;
+    vertical-align: middle;
+}
+#body-menu {
+    border-right-style: solid;
+    border-right-color: #ccd;
+    border-right-width: 1px;
+    margin: 0 2px 0 0;
+    padding: 0 1ex 0 1ex;
+    vertical-align: top;
+    width: 180px;
+}
+#body-form {
+    border-bottom-style: solid;
+    border-bottom-color: #ccd;
+    border-bottom-width: 1px;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    height: 1em;
+    padding: 2px;
+    text-align: center;
+}
+#body-content {
+    padding: 5px;
+    vertical-align: top;
+}
+#body-footer {
+    color: gray;
+    font-size: 0.8em;
+    padding-left: 1em;
+    text-align: left;
+}
+
+/** Links
+ */
+a {
+    color: inherit;
+    text-decoration: underline;
+}
+a:hover {
+    text-decoration: none;
+}
+a.text-link, #body-menu a {
+    color: inherit;
+    text-decoration: none;
+}
+a.text-link:hover, #body-menu a:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+a.image {
+    text-decoration: none;
+}
+
+/** Images
+ */
+img {
+    border: none;
+}
+
+/** Bandeau
+ */
+#bandeau {
+    background: url("bandeau.png") no-repeat scroll left center #CCCCCC;
+    border: medium none;
+    color: #505050;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 10px;
+    height: 15px;
+    margin: 0;
+    padding: 0 0 0 15px;
+}
+#bandeau a {
+    color: inherit;
+}
+
+/** Logo
+ */
+#body-logo {
+    padding-top: 1ex;
+    text-align: center;
+}
+
+/** Menu
+ */
+#body-menu a {
+    color: #003;
+}
+#body-menu .menu-title {
+    font-family: sans-serif;
+    font-size: larger;
+}
+#body-menu .menu-subtitle {
+    font-family: sans-serif;
+    padding-left: 1em;
+}
+#body-menu ul {
+    list-style: none;
+    margin: 0 0 1em 0;
+    padding: 0 0 0 1ex;
+}
+
+/** Errors
+ */
+div.errors {
+    color: #400;
+}
+.errors ul {
+    list-style-type: square;
+}
+.errors ul:before {
+    color: #822;
+    content: "Erreur :";
+    display: block;
+    font-variant: small-caps;
+    margin-left: -1em;
+}
+
+/** Tables
+ */
+.even {
+    background-color: #def;
+}
+.odd {
+    background-color: white;
+}
+.aliment-red.even, .user-red.even {
+    background-color: #fdd;
+}
+.aliment-red.odd, .user-red.odd {
+    background-color: #fee;
+}
+
+/** History
+ */
+ul.history {
+    list-style: none;
+    /*margin: 0;*/
+    padding: 0;
+}
+.history-total span {
+    display: block;
+}
+.history a {
+    color: inherit;
+}
+a.history-cancel {
+    font-style: italic;
+}
+
+/** Aliments
+ */
+tr.aliment-outoforder {
+    color: #777;
+}
+p.aliment-outoforder {
+    font-weight: bold;
+}
+.aliment-red {
+    color: red;
+}
+
+/** Users
+ */
+.user-red {
+    color: red;
+}
+.user-green {
+    color: green;
+}
+
+/* vim: set et ts=4 sts=4 sw=4: */

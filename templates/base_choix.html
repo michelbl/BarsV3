@@ -1,0 +1,59 @@
+{% extends "barsapp/base.html" %}
+
+{% block menu %}
+    {% if my_user %}
+    <div class="menu-title">{{ my_user.pseudo }}</div>
+    <ul>
+        <li><a href="/logout">D&eacute;connexion</a></li>
+        <li><a href="/user-edit/{{ user.id }}">Configuration</a></li>
+        <li><a href="/ip">Adresse IP</a></li>
+    </ul>
+    {% endif %}
+
+    {# List all the bars #}
+    <div class="menu-title">Liste des bars</div>
+        <ul>
+            {% for bar in bar_list %}
+                <li><a href="/{{ bar.name }}">{{ bar.hrname }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% if my_user %}
+        <h3>Tes bars favoris</h3>
+        {% for bar in my_user.bar_list %}
+        <a href="/{{ bar.name }}" class="image">
+            <img src="{{ STATIC_URL }}/images/{{ bar.name }}.png" alt="{{ bar.hrname}}" title="{{ bar.hrname }}" width="105px" height="105px" />
+        </a>
+        {% endfor %}
+    {% endif %}
+
+    {% if my_ip %}
+        {% if my_ip.bar %}
+            <h3>Un bar est associé à cette adresse IP</h3>
+            <a href="/{{ my_ip.bar.name }}" class="image">
+                <img src="{{ STATIC_URL }}/images/{{ my_ip.bar.name }}.png" alt="{{ my_ip.bar.hrname}}" title="{{ my_ip.bar.hrname }}" width="105px" height="105px" />
+            </a>
+        {% elif my_ip.user %}
+            <h3>Bars associés à {{ my_ip.user }}</h3>
+            {% for bar in my_ip.bar_list %}
+            <a href="/{{ bar.name }}" class="image">
+                <img src="{{ STATIC_URL }}/images/{{ bar.name }}.png" alt="{{ bar.hrname}}" title="{{ bar.hrname }}" width="105px" height="105px" />
+            </a>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+
+    <h3>Choisis un bar parmi les suivants</h3>
+    {% for bar in bar_list %}
+    <a href="/{{ bar.name }}" class="image">
+        <img src="{{ STATIC_URL }}/images/{{ bar.name }}.png" alt="{{ bar.hrname}}" title="{{ bar.hrname }}" width="105px" height="105px" />
+    </a>
+    {% endfor %}
+{% endblock %}
+
+
+
+

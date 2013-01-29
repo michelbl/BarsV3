@@ -1,0 +1,9 @@
+DirectoryIndex bars.php
+RewriteEngine on
+RewriteBase @REWRITE_BASE@
+
+# Rewrite URL if it does not exist
+RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ?n=$1 [L,QSA]
+

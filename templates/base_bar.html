@@ -1,0 +1,72 @@
+{% extends "barsapp/base.html" %}
+
+{% block icons %}
+    {{ block.super }}
+
+    <a href="{{ base_url }}/{{ bar.name }}/" class="image">
+        <img src="{{ STATIC_URL }}images/{{ bar.name }}.png" alt="[{{ bar.name }}]" width="64px" height="64px"/>
+    </a>
+ {% endblock %}
+
+
+ {% block title %}
+    {{ bar.hrname }}
+ {% endblock %}
+
+
+{% block menu %}
+    {% if my_user %}
+    <div class="menu-title">{{ my_user.pseudo }}</div>
+    <ul>
+        {% if my_user.known %}
+        <div class="menu-subtitle">{{ my_user.amount }}</div>
+        {% else %}
+            <div class="menu-subtitle">Inconnu dans ce bar</div>
+        {% endif %}
+ 
+        <li><a href="{{ bar.name }}/logout">D&eacute;connexion</a></li>
+        <li><a href="/user-edit/{{ user.id }}">Configuration</a></li>
+        <li><a href="/ip">Adresse IP</a></li>
+
+        {% if known %}
+            <li><a href="{{ bar.name }}/user-home#history">Historique</a></li>
+            <li><a href="{{ bar.name }}/donate">Don &agrave; tes amis</a></li> 
+        {% endif %}
+    </ul>
+    {% endif %}
+
+    {% if my_user.respo %}
+        <div class="menu-title">Administration</div>
+        <ul>
+            <li><a href="{{ bar.name }}/new-provision">Rentre une appro</a></li>
+            <li><a href="{{ bar.name }}/inventory">Inventaire</a></li>
+            <li><a href="{{ bar.name }}/how-much">Comptabilit&eacute;</a></li>
+            <li><a href="{{ bar.name }}/user-add">Nouvel utilisateur</a></li>
+            <li><a href="{{ bar.name }}/alim-add">Nouvel aliment</a></li>
+            <li><a href="{{ bar.name }}/settings">Param&egrave;tres du bar</a></li>
+            <li><a href="{{ bar.name }}/aliments-invisible">Aliments invisibles</a></li>
+        </ul>
+    {% endif %}
+
+    <div class="menu-title">Bar</div>
+    <ul>
+        <li><a href="{{ bar.name }}">Page d'accueil</a></li>
+        <li><a href="{{ bar.name }}/history">Historique</a></li>
+    </ul>
+
+    <div class="menu-title">Aliments</div>
+    <ul>
+        <li><a href="{{ bar.name }}/aliments">Liste</a></li>
+        <li><a href="{{ bar.name }}/aliments-open">Aliments open</a></li>
+        <li><a href="{{ bar.name }}/provision">Appros</a></li>
+        <li><a href="{{ bar.name }}/stolen-products">Vols r&eacute;cents</a></li>
+        <li><a href="{{ bar.name }}/aliments-top">Meilleurs aliments</a></li>
+    </ul>
+
+    <div class="menu-title">Utilisateurs</div>
+    <ul>
+        <li><a href="{{ bar.name }}/users">Liste</a></li>
+        <li><a href="{{ bar.name }}/the-bad-guys">Mauvais payeurs</a></li>
+        <li><a href="{{ bar.name }}/users-top">Meilleurs consommateurs</a></li>
+    </ul>
+{% endblock %}
